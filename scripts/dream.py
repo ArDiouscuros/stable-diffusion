@@ -99,6 +99,8 @@ def main():
 
     # preload the model
     t2i.load_model()
+    #set additional option
+    t2i.free_gpu_mem = opt.free_gpu_mem
 
     if not infile:
         print(
@@ -430,6 +432,12 @@ def create_argv_parser():
         dest='full_precision',
         action='store_true',
         help='Use more memory-intensive full precision math for calculations',
+    )
+    parser.add_argument(
+        '--free_gpu_mem',
+        dest='free_gpu_mem',
+        action='store_true',
+        help='Force free gpu memory before final decoding',
     )
     parser.add_argument(
         '-g',
